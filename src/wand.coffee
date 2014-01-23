@@ -11,7 +11,7 @@ FW.Wand = class Wand
     @fakeObject = new THREE.Mesh(new THREE.SphereGeometry(), new THREE.MeshBasicMaterial())
 
 
-    texture = THREE.ImageUtils.loadTexture('assets/fairy-dust.png')
+    texture = THREE.ImageUtils.loadTexture('assets/smokeparticle.png')
     texture.minFilter = THREE.LinearMipMapLinearFilter;
 
     @spellGroup = new ShaderParticleGroup

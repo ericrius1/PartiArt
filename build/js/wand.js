@@ -13,7 +13,7 @@
       this.castingTimeoutInterval = 20;
       this.startingPos = new THREE.Vector3(0, 0, 0);
       this.fakeObject = new THREE.Mesh(new THREE.SphereGeometry(), new THREE.MeshBasicMaterial());
-      texture = THREE.ImageUtils.loadTexture('assets/fairy-dust.png');
+      texture = THREE.ImageUtils.loadTexture('assets/smokeparticle.png');
       texture.minFilter = THREE.LinearMipMapLinearFilter;
       this.spellGroup = new ShaderParticleGroup({
         texture: texture,

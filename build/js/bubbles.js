@@ -33,13 +33,15 @@
         colorEnd = new THREE.Color();
         colorEnd.setRGB(Math.random(), Math.random(), Math.random());
         spellEmitter = new ShaderParticleEmitter({
+          positionSpread: new THREE.Vector3(1, 1, 1),
+          sizeEnd: 5,
           colorStart: colorStart,
           colorEnd: colorEnd,
-          particlesPerSecond: 10,
+          particlesPerSecond: 50,
           opacityStart: 0.5,
           opacityMiddle: 1,
           opacityEnd: 0,
-          accelerationSpread: new THREE.Vector3(1, 1, 1)
+          accelerationSpread: new THREE.Vector3(2, 2, 2)
         });
         this.spellGroup.addEmitter(spellEmitter);
         this.spellEmitters.push(spellEmitter);

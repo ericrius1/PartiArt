@@ -2,10 +2,10 @@ FW.Spells = class Spells
   constructor: ->
     @spells = []
     @activeSpellIndex = 0
-    #FIRE
-    @spells.push new FW.Fire()
     #LIGHT WAND
     @spells.push new FW.Wand()
+    #FIRE
+    @spells.push new FW.Fire()
     #BUBBLES
     @spells.push new FW.Bubbles()
 
