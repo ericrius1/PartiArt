@@ -7,6 +7,7 @@ FW.World = class World
     FW.width = 100000
     @camFar = FW.width * 2
     @time = Date.now()
+    @rippleFactor = 90
 
     # CAMERA
     FW.camera = new THREE.PerspectiveCamera(75.0, @SCREEN_WIDTH / @SCREEN_HEIGHT, 1, @camFar)
@@ -81,7 +82,7 @@ FW.World = class World
     requestAnimationFrame @animate
     delta = FW.clock.getDelta()
     time = Date.now()
-    @water.material.uniforms.time.value += 1.0 / 60
+    @water.material.uniforms.time.value += 1.0 / @rippleFactor
     FW.controls.update(Date.now() - @time)
     @stars.update()
     FW.spells.update()

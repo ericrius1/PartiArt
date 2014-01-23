@@ -4,7 +4,7 @@ FW.Fire = class Fire
     @numEmitters = 200
     @emitterActivateFraction = 1/ (@numEmitters)
     @spellEmitters = []
-    @distanceFromPlayer = 100
+    @distanceFromPlayer = 50
     @castingTimeoutInterval = 50
     @fakeObject = new THREE.Mesh(new THREE.SphereGeometry(), new THREE.MeshBasicMaterial())
 

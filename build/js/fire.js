@@ -8,7 +8,7 @@
       this.numEmitters = 200;
       this.emitterActivateFraction = 1 / this.numEmitters;
       this.spellEmitters = [];
-      this.distanceFromPlayer = 100;
+      this.distanceFromPlayer = 50;
       this.castingTimeoutInterval = 50;
       this.fakeObject = new THREE.Mesh(new THREE.SphereGeometry(), new THREE.MeshBasicMaterial());
       texture = THREE.ImageUtils.loadTexture('assets/smokeparticle.png');

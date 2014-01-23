@@ -4,14 +4,14 @@
   FW.Meteors = Meteors = (function() {
     function Meteors() {
       var i, _i;
-      this.calcTimeout = 1000;
+      this.calcTimeout = 5000;
       this.meteors = [];
       this.meteorGroup = new ShaderParticleGroup({
         texture: THREE.ImageUtils.loadTexture('assets/star.png'),
         blending: THREE.AdditiveBlending,
         maxAge: 3
       });
-      this.meteorVisibleDistance = 50000;
+      this.meteorVisibleDistance = 100000;
       for (i = _i = 1; _i <= 6; i = ++_i) {
         this.newMeteor();
       }
@@ -60,7 +60,6 @@
     Meteors.prototype.calcPositions = function() {
       var distance, meteor, _i, _len, _ref,
         _this = this;
-      console.log('shnur');
       _ref = this.meteors;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         meteor = _ref[_i];

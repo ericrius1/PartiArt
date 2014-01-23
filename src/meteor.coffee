@@ -1,12 +1,12 @@
 FW.Meteors = class Meteors
   constructor: ()->
-    @calcTimeout = 1000
+    @calcTimeout = 5000
     @meteors = []
     @meteorGroup = new ShaderParticleGroup
       texture: THREE.ImageUtils.loadTexture('assets/star.png'),
       blending: THREE.AdditiveBlending,
       maxAge: 3
-    @meteorVisibleDistance = 50000
+    @meteorVisibleDistance = 100000
     for i in [1..6]
       @newMeteor()
     FW.scene.add(@meteorGroup.mesh)
@@ -50,7 +50,6 @@ FW.Meteors = class Meteors
     @meteors.push meteor
     
   calcPositions: ->
-    console.log 'shnur'
     for meteor in @meteors
       distance =  FW.controls.getPosition().distanceTo(meteor.position)
       #meteor is far away, respawn it somewhere. Randomize for staggered show

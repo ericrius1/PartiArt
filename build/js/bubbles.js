@@ -5,7 +5,7 @@
     function Bubbles() {
       var texture;
       this.name = 'bubbles';
-      this.riseSpeed = .1;
+      this.riseSpeed = .05;
       this.numEmitters = 100;
       this.emitterActivateFraction = 1 / this.numEmitters;
       this.spellEmitters = [];

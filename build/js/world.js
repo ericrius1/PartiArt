@@ -13,6 +13,7 @@
       FW.width = 100000;
       this.camFar = FW.width * 2;
       this.time = Date.now();
+      this.rippleFactor = 90;
       FW.camera = new THREE.PerspectiveCamera(75.0, this.SCREEN_WIDTH / this.SCREEN_HEIGHT, 1, this.camFar);
       FW.scene = new THREE.Scene();
       this.controls = new FW.Controls(FW.camera);
@@ -64,7 +65,7 @@
       requestAnimationFrame(this.animate);
       delta = FW.clock.getDelta();
       time = Date.now();
-      this.water.material.uniforms.time.value += 1.0 / 60;
+      this.water.material.uniforms.time.value += 1.0 / this.rippleFactor;
       FW.controls.update(Date.now() - this.time);
       this.stars.update();
       FW.spells.update();

@@ -8,6 +8,8 @@ FW.Spells = class Spells
     @spells.push new FW.Fire()
     #BUBBLES
     @spells.push new FW.Bubbles()
+    #WORMHOLE
+    @spells.push new FW.Wormhole()
 
     $('body')[0].on 'mousedown', (event)=>
       @spells[@activeSpellIndex].castSpell()
