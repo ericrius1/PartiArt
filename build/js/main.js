@@ -21,7 +21,7 @@
 
   FW.globalTick = 0.16;
 
-  window.soundOn = false;
+  window.soundOn = true;
 
   window.onload = function() {
     var infoEl, infoShowing;
