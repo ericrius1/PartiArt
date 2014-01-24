@@ -17,6 +17,21 @@ body {
 
 }
 
+.intro{
+  position: absolute;
+  width: 400px;
+  height: 200px;
+  left: 40%;
+  top: 40%;
+  background: black;
+  opacity: 0.5;
+}
+
+.intro-text{
+  margin: 10px;
+  color: red;
+}
+
 #fire{
   position:absolute;
   left: 50%;
