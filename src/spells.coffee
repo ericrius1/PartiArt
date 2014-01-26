@@ -9,7 +9,9 @@ FW.Spells = class Spells
     #BUBBLES
     @spells.push new FW.Bubbles()
     #WORMHOLE
-    @spells.push new FW.Wormhole()
+    @spells.push new FW.Fireflies()
+
+    FW.spellHistory = []
 
     $('body')[0].on 'mousedown', (event)=>
       @spells[@activeSpellIndex].castSpell()
@@ -20,6 +22,7 @@ FW.Spells = class Spells
     # @spells[@activeSpellIndex].update()
     for spell in @spells
       spell.update()
+
 
   nextSpell: ->
     #make sure we end spell if user had been holding mouse down when he switched to a new one

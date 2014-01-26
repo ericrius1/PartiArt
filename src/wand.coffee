@@ -16,7 +16,7 @@ FW.Wand = class Wand
 
     @spellGroup = new ShaderParticleGroup
       texture: texture
-      maxAge: 1
+      maxAge: 5
       # blending: THREE.NormalBlending
 
     @initializeSpells()
@@ -32,7 +32,7 @@ FW.Wand = class Wand
         sizeEnd: 10
         colorStart: colorStart
         colorEnd: colorEnd
-        particlesPerSecond: 3
+        particlesPerSecond: 1
         opacityStart: 0.2
         opacityMiddle: 1
         opacityEnd: 0

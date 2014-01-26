@@ -1,6 +1,6 @@
-FW.Wormhole = class Wormhole
+FW.Fireflies = class Fireflies
   constructor: ->
-    @name = 'wormhole'
+    @name = 'fireflies'
     @wormholeSpeed = 1
     @riseSpeed = .1
     @numEmitters = 10
@@ -64,13 +64,7 @@ FW.Wormhole = class Wormhole
 
   update: ->
     @spellGroup.tick()
-    # @fakeObject.translateZ(@direction?.z * @wormholeSpeed)
-    # @fakeObject.translateY(@direction?.y * @wormholeSpeed)
-    # @fakeObject.translateX(@direction?.x * @wormholeSpeed)
-    # for spellEmitter in @spellEmitters
-    #   if Math.random() < @emitterActivateFraction
-    #     spellEmitter.position.copy(@fakeObject.position)
-    #     spellEmitter.enable()
+
 
 
 

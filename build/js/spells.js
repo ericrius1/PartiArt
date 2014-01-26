@@ -9,7 +9,8 @@
       this.spells.push(new FW.Wand());
       this.spells.push(new FW.Fire());
       this.spells.push(new FW.Bubbles());
-      this.spells.push(new FW.Wormhole());
+      this.spells.push(new FW.Fireflies());
+      FW.spellHistory = [];
       $('body')[0].on('mousedown', function(event) {
         return _this.spells[_this.activeSpellIndex].castSpell();
       });
