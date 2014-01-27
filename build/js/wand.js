@@ -10,7 +10,7 @@
       this.spellEmitters = [];
       this.height = 220;
       this.distanceFromPlayer = 50;
-      this.castingTimeoutInterval = 20;
+      this.castingTimeoutInterval = 50;
       this.startingPos = new THREE.Vector3(0, 0, 0);
       this.fakeObject = new THREE.Mesh(new THREE.SphereGeometry(), new THREE.MeshBasicMaterial());
       texture = THREE.ImageUtils.loadTexture('assets/smokeparticle.png');
@@ -60,9 +60,11 @@
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         spellEmitter = _ref[_i];
         if (Math.random() < this.emitterActivateFraction) {
+          console.log("SHNUUR");
           spellEmitter.position.copy(this.fakeObject.position);
           spellEmitter.position.y = Math.max(5, spellEmitter.position.y);
           spellEmitter.enable();
+          FW.spellsToUndo.push(spellEmitter);
         }
       }
       return this.castingTimeout = setTimeout(function() {

@@ -62,6 +62,7 @@
         if (Math.random() < this.emitterActivateFraction) {
           spellEmitter.position.copy(this.fakeObject.position);
           spellEmitter.enable();
+          FW.spellsToUndo.push(spellEmitter);
         }
       }
       return this.castingTimeout = setTimeout(function() {

@@ -58,6 +58,7 @@ FW.Fire = class Fire
         spellEmitter.position.copy(@fakeObject.position)
         spellEmitter.position.y = Math.max 0, spellEmitter.position.y-50
         spellEmitter.enable()
+        FW.spellsToUndo.push spellEmitter
     @castingTimeout = setTimeout(=>
       @castSpell()
     @castingTimeoutInterval)

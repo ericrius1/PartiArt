@@ -64,6 +64,7 @@
           spellEmitter.position.copy(this.fakeObject.position);
           spellEmitter.position.y = Math.max(0, spellEmitter.position.y - 50);
           spellEmitter.enable();
+          FW.spellsToUndo.push(spellEmitter);
         }
       }
       return this.castingTimeout = setTimeout(function() {

@@ -10,14 +10,34 @@
       this.spells.push(new FW.Fire());
       this.spells.push(new FW.Bubbles());
       this.spells.push(new FW.Fireflies());
-      FW.spellHistory = [];
+      FW.spellsToUndo = [];
+      FW.spellsToRedo = [];
       $('body')[0].on('mousedown', function(event) {
         return _this.spells[_this.activeSpellIndex].castSpell();
       });
       $('body')[0].on('mouseup', function() {
         return _this.spells[_this.activeSpellIndex].endSpell();
       });
+      $('body')[0].on('keydown', this.handleHistory);
     }
+
+    Spells.prototype.handleHistory = function(event) {
+      var spellEmitter;
+      if (event.keyCode === 90) {
+        if (FW.spellsToUndo.length > 0) {
+          spellEmitter = FW.spellsToUndo.pop();
+          spellEmitter.disable();
+          FW.spellsToRedo.push(spellEmitter);
+        }
+      }
+      if (event.keyCode === 88) {
+        if (FW.spellsToRedo.length > 0) {
+          spellEmitter = FW.spellsToRedo.pop();
+          spellEmitter.enable();
+          return FW.spellsToUndo.push(spellEmitter);
+        }
+      }
+    };
 
     Spells.prototype.update = function() {
       var spell, _i, _len, _ref, _results;

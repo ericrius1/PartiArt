@@ -55,6 +55,7 @@ FW.Fireflies = class Fireflies
       if Math.random() < @emitterActivateFraction
         spellEmitter.position.copy(@fakeObject.position)
         spellEmitter.enable()
+        FW.spellsToUndo.push spellEmitter
     @castingTimeout = setTimeout(=>
       @castSpell()
     @castingTimeoutInterval)

@@ -12,7 +12,7 @@ SC?.initialize({
 
 FW.sfxVolume = 0.2
 FW.globalTick = 0.16
-window.soundOn = true
+window.soundOn = false
 
 window.onload = ->
   FW.myWorld = new FW.World()
