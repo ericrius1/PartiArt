@@ -6,7 +6,7 @@ FW.Wand = class Wand
     @spellEmitters = []
     @height = 220
     @distanceFromPlayer = 50
-    @castingTimeoutInterval = 20
+    @castingTimeoutInterval = 50
     @startingPos = new THREE.Vector3 0, 0, 0
     @fakeObject = new THREE.Mesh(new THREE.SphereGeometry(), new THREE.MeshBasicMaterial())
 
@@ -16,7 +16,7 @@ FW.Wand = class Wand
 
     @spellGroup = new ShaderParticleGroup
       texture: texture
-      maxAge: 1
+      maxAge: 5
       # blending: THREE.NormalBlending
 
     @initializeSpells()
@@ -32,7 +32,7 @@ FW.Wand = class Wand
         sizeEnd: 10
         colorStart: colorStart
         colorEnd: colorEnd
-        particlesPerSecond: 3
+        particlesPerSecond: 1
         opacityStart: 0.2
         opacityMiddle: 1
         opacityEnd: 0
@@ -53,9 +53,11 @@ FW.Wand = class Wand
     @fakeObject.translateX(direction.x * @distanceFromPlayer)
     for spellEmitter in @spellEmitters
       if Math.random() < @emitterActivateFraction
+        console.log "SHNUUR"
         spellEmitter.position.copy(@fakeObject.position)
         spellEmitter.position.y = Math.max 5, spellEmitter.position.y
         spellEmitter.enable()
+        FW.spellsToUndo.push spellEmitter
     @castingTimeout = setTimeout(=>
       @castSpell()
     @castingTimeoutInterval)

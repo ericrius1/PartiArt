@@ -1,45 +1,45 @@
 (function() {
-  var Wand;
+  var Fireflies;
 
-  FW.Wand = Wand = (function() {
-    function Wand() {
+  FW.Fireflies = Fireflies = (function() {
+    function Fireflies() {
       var texture;
-      this.name = 'wand';
-      this.numEmitters = 20000;
+      this.name = 'fireflies';
+      this.wormholeSpeed = 1;
+      this.riseSpeed = .1;
+      this.numEmitters = 10;
       this.emitterActivateFraction = 1 / this.numEmitters;
       this.spellEmitters = [];
       this.height = 220;
-      this.distanceFromPlayer = 50;
-      this.castingTimeoutInterval = 50;
+      this.distanceFromPlayer = 70;
+      this.castingTimeoutInterval = 1000;
       this.startingPos = new THREE.Vector3(0, 0, 0);
-      this.fakeObject = new THREE.Mesh(new THREE.SphereGeometry(), new THREE.MeshBasicMaterial());
-      texture = THREE.ImageUtils.loadTexture('assets/smokeparticle.png');
+      this.fakeObject = new THREE.Mesh(new THREE.SphereGeometry(1), new THREE.MeshBasicMaterial());
+      texture = THREE.ImageUtils.loadTexture('assets/firefly.png');
       texture.minFilter = THREE.LinearMipMapLinearFilter;
       this.spellGroup = new ShaderParticleGroup({
         texture: texture,
-        maxAge: 5
+        maxAge: 3
       });
       this.initializeSpells();
       FW.scene.add(this.spellGroup.mesh);
     }
 
-    Wand.prototype.initializeSpells = function() {
-      var colorEnd, colorStart, i, spellEmitter, _i, _ref, _results;
+    Fireflies.prototype.initializeSpells = function() {
+      var i, spellEmitter, _i, _ref, _results;
       _results = [];
       for (i = _i = 0, _ref = this.numEmitters; 0 <= _ref ? _i < _ref : _i > _ref; i = 0 <= _ref ? ++_i : --_i) {
-        colorStart = new THREE.Color();
-        colorStart.setRGB(Math.random(), Math.random(), Math.random());
-        colorEnd = new THREE.Color();
-        colorEnd.setRGB(Math.random(), Math.random(), Math.random());
         spellEmitter = new ShaderParticleEmitter({
-          size: 20,
+          positionSpread: new THREE.Vector3(60, 20, 60),
+          size: 10,
           sizeEnd: 10,
-          colorStart: colorStart,
-          colorEnd: colorEnd,
-          particlesPerSecond: 1,
-          opacityStart: 0.2,
+          colorEnd: new THREE.Color(),
+          particlesPerSecond: 100,
+          opacityStart: 0.5,
           opacityMiddle: 1,
-          opacityEnd: 0
+          opacityEnd: 0.5,
+          velocitySpread: new THREE.Vector3(5, 5, 5),
+          accelerationSpread: new THREE.Vector3(2, 2, 2)
         });
         this.spellGroup.addEmitter(spellEmitter);
         this.spellEmitters.push(spellEmitter);
@@ -48,21 +48,19 @@
       return _results;
     };
 
-    Wand.prototype.castSpell = function() {
-      var direction, spellEmitter, _i, _len, _ref,
+    Fireflies.prototype.castSpell = function() {
+      var spellEmitter, _i, _len, _ref,
         _this = this;
       this.fakeObject.position.copy(FW.controls.getPosition());
-      direction = FW.controls.getDirection();
-      this.fakeObject.translateZ(direction.z * this.distanceFromPlayer);
-      this.fakeObject.translateY(direction.y * this.distanceFromPlayer);
-      this.fakeObject.translateX(direction.x * this.distanceFromPlayer);
+      this.direction = FW.controls.getDirection();
+      this.fakeObject.translateZ(this.direction.z * this.distanceFromPlayer);
+      this.fakeObject.translateY(this.direction.y * this.distanceFromPlayer);
+      this.fakeObject.translateX(this.direction.x * this.distanceFromPlayer);
       _ref = this.spellEmitters;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         spellEmitter = _ref[_i];
         if (Math.random() < this.emitterActivateFraction) {
-          console.log("SHNUUR");
           spellEmitter.position.copy(this.fakeObject.position);
-          spellEmitter.position.y = Math.max(5, spellEmitter.position.y);
           spellEmitter.enable();
           FW.spellsToUndo.push(spellEmitter);
         }
@@ -72,15 +70,15 @@
       }, this.castingTimeoutInterval);
     };
 
-    Wand.prototype.endSpell = function() {
+    Fireflies.prototype.endSpell = function() {
       return window.clearTimeout(this.castingTimeout);
     };
 
-    Wand.prototype.update = function() {
+    Fireflies.prototype.update = function() {
       return this.spellGroup.tick();
     };
 
-    return Wand;
+    return Fireflies;
 
   })();
 
