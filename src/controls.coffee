@@ -1,7 +1,7 @@
 FW.Controls = class Controls
   constructor: ->
     FW.controls = new THREE.PointerLockControls(FW.camera)
-
+    # introScreen = document.getElementById('')
     document.addEventListener 'click', (event)->
 
       havePointerLock = "pointerLockElement" of document or "mozPointerLockElement" of document or "webkitPointerLockElement" of document

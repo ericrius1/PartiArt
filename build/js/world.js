@@ -21,7 +21,7 @@
       FW.controls.fly = true;
       FW.Renderer = new THREE.WebGLRenderer();
       FW.Renderer.setSize(this.SCREEN_WIDTH, this.SCREEN_HEIGHT);
-      FW.Renderer.setClearColor(0x06071a);
+      FW.Renderer.setClearColor(0x000000);
       document.body.appendChild(FW.Renderer.domElement);
       light1 = new THREE.DirectionalLight(0xffffff, 1.0);
       light1.position.set(1, 1, 1);
@@ -61,10 +61,7 @@
     };
 
     World.prototype.animate = function() {
-      var delta, time;
       requestAnimationFrame(this.animate);
-      delta = FW.clock.getDelta();
-      time = Date.now();
       this.water.material.uniforms.time.value += 1.0 / this.rippleFactor;
       FW.controls.update(Date.now() - this.time);
       this.stars.update();
@@ -76,8 +73,6 @@
     };
 
     World.prototype.render = function() {
-      var delta;
-      delta = FW.clock.getDelta();
       this.water.render();
       return FW.Renderer.render(FW.scene, FW.camera);
     };

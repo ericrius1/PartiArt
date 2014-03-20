@@ -1,6 +1,6 @@
-FW.Wand = class Wand
+FW.Mystery = class Mystery
   constructor: ->
-    @name = 'wand'
+    @name = 'mystery'
     @numEmitters = 20000
     @emitterActivateFraction = 1/ (@numEmitters)
     @spellEmitters = []
@@ -16,7 +16,7 @@ FW.Wand = class Wand
 
     @spellGroup = new ShaderParticleGroup
       texture: texture
-      maxAge: 5
+      maxAge: 20
       # blending: THREE.NormalBlending
 
     @initializeSpells()
@@ -24,18 +24,15 @@ FW.Wand = class Wand
   initializeSpells: ->
     for i in [0...@numEmitters]
       colorStart = new THREE.Color()
-      colorStart.setRGB Math.random(), Math.random(), Math.random()
-      colorEnd = new THREE.Color()
-      colorEnd.setRGB Math.random(), Math.random(), Math.random()
+      colorStart.setRGB 1.0, 0, 0
       spellEmitter = new ShaderParticleEmitter
-        size: 20
-        sizeEnd: 10
+        size: 10
+        sizeEnd: 100000
         colorStart: colorStart
-        colorEnd: colorEnd
         particlesPerSecond: 1
         opacityStart: 0.2
         opacityMiddle: 1
-        opacityEnd: 0
+        opacityEnd: 1
 
       @spellGroup.addEmitter spellEmitter
       @spellEmitters.push spellEmitter

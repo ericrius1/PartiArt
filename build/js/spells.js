@@ -10,6 +10,7 @@
       this.spells.push(new FW.Fire());
       this.spells.push(new FW.Bubbles());
       this.spells.push(new FW.Fireflies());
+      this.spells.push(new FW.Mystery());
       FW.spellsToUndo = [];
       FW.spellsToRedo = [];
       $('body')[0].on('mousedown', function(event) {

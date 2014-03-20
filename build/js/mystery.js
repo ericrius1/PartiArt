@@ -1,10 +1,10 @@
 (function() {
-  var Wand;
+  var Mystery;
 
-  FW.Wand = Wand = (function() {
-    function Wand() {
+  FW.Mystery = Mystery = (function() {
+    function Mystery() {
       var texture;
-      this.name = 'wand';
+      this.name = 'mystery';
       this.numEmitters = 20000;
       this.emitterActivateFraction = 1 / this.numEmitters;
       this.spellEmitters = [];
@@ -17,29 +17,26 @@
       texture.minFilter = THREE.LinearMipMapLinearFilter;
       this.spellGroup = new ShaderParticleGroup({
         texture: texture,
-        maxAge: 5
+        maxAge: 20
       });
       this.initializeSpells();
       FW.scene.add(this.spellGroup.mesh);
     }
 
-    Wand.prototype.initializeSpells = function() {
-      var colorEnd, colorStart, i, spellEmitter, _i, _ref, _results;
+    Mystery.prototype.initializeSpells = function() {
+      var colorStart, i, spellEmitter, _i, _ref, _results;
       _results = [];
       for (i = _i = 0, _ref = this.numEmitters; 0 <= _ref ? _i < _ref : _i > _ref; i = 0 <= _ref ? ++_i : --_i) {
         colorStart = new THREE.Color();
-        colorStart.setRGB(Math.random(), Math.random(), Math.random());
-        colorEnd = new THREE.Color();
-        colorEnd.setRGB(Math.random(), Math.random(), Math.random());
+        colorStart.setRGB(1.0, 0, 0);
         spellEmitter = new ShaderParticleEmitter({
-          size: 20,
-          sizeEnd: 10,
+          size: 10,
+          sizeEnd: 100000,
           colorStart: colorStart,
-          colorEnd: colorEnd,
           particlesPerSecond: 1,
           opacityStart: 0.2,
           opacityMiddle: 1,
-          opacityEnd: 0
+          opacityEnd: 1
         });
         this.spellGroup.addEmitter(spellEmitter);
         this.spellEmitters.push(spellEmitter);
@@ -48,7 +45,7 @@
       return _results;
     };
 
-    Wand.prototype.castSpell = function() {
+    Mystery.prototype.castSpell = function() {
       var direction, spellEmitter, _i, _len, _ref,
         _this = this;
       this.fakeObject.position.copy(FW.controls.getPosition());
@@ -71,15 +68,15 @@
       }, this.castingTimeoutInterval);
     };
 
-    Wand.prototype.endSpell = function() {
+    Mystery.prototype.endSpell = function() {
       return window.clearTimeout(this.castingTimeout);
     };
 
-    Wand.prototype.update = function() {
+    Mystery.prototype.update = function() {
       return this.spellGroup.tick();
     };
 
-    return Wand;
+    return Mystery;
 
   })();
 

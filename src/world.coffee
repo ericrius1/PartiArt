@@ -15,7 +15,7 @@ FW.World = class World
 
     # SCENE 
     FW.scene = new THREE.Scene()
-    #CONTROLS
+    #CONTROL
     @controls = new FW.Controls(FW.camera)
     FW.scene.add FW.controls.getObject()
     FW.controls.fly = true
@@ -23,7 +23,7 @@ FW.World = class World
     # RENDERER
     FW.Renderer = new THREE.WebGLRenderer()
     FW.Renderer.setSize @SCREEN_WIDTH, @SCREEN_HEIGHT
-    FW.Renderer.setClearColor 0x06071a
+    FW.Renderer.setClearColor 0x000000
     document.body.appendChild FW.Renderer.domElement
 
     # LIGHTING
@@ -80,8 +80,6 @@ FW.World = class World
 
   animate : =>
     requestAnimationFrame @animate
-    delta = FW.clock.getDelta()
-    time = Date.now()
     @water.material.uniforms.time.value += 1.0 / @rippleFactor
     FW.controls.update(Date.now() - @time)
     @stars.update()
@@ -92,7 +90,6 @@ FW.World = class World
 
     @render()
   render : ->
-    delta = FW.clock.getDelta()
     @water.render()
     FW.Renderer.render( FW.scene, FW.camera );
 
