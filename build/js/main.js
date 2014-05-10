@@ -21,10 +21,11 @@
 
   FW.globalTick = 0.16;
 
-  window.soundOn = true;
+  window.soundOn = false;
 
   window.onload = function() {
     var infoEl, infoShowing;
+    FW.partiRef = new Firebase("https://partiart.firebaseio.com/");
     FW.myWorld = new FW.World();
     FW.myWorld.animate();
     FW.main = new FW.Main();
