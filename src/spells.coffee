@@ -10,8 +10,6 @@ FW.Spells = class Spells
     @spells.push new FW.Bubbles()
     #WORMHOLE
     @spells.push new FW.Fireflies()
-    #MYSTERY
-    @spells.push new FW.Mystery()
 
     FW.spellsToUndo = []
     FW.spellsToRedo = []
