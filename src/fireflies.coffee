@@ -21,6 +21,7 @@ FW.Fireflies = class Fireflies
       maxAge: 3
 
     @initializeSpells()
+    @spellGroup.mesh.renderDepth = -1;
     FW.scene.add(@spellGroup.mesh)
   initializeSpells: ->
     for i in [0...@numEmitters]

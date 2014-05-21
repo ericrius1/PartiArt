@@ -21,6 +21,7 @@
         maxAge: 2
       });
       this.initializeSpells();
+      this.spellGroup.mesh.renderDepth = -1;
       FW.scene.add(this.spellGroup.mesh);
     }
 

@@ -21,6 +21,7 @@
         maxAge: 2
       });
       this.initializeSpells();
+      this.spellGroup.mesh.renderDepth = -1;
       FW.scene.add(this.spellGroup.mesh);
     }
 
@@ -351,6 +352,7 @@
         maxAge: 3
       });
       this.initializeSpells();
+      this.spellGroup.mesh.renderDepth = -1;
       FW.scene.add(this.spellGroup.mesh);
     }
 
@@ -527,10 +529,11 @@
 
   FW.globalTick = 0.16;
 
-  window.soundOn = true;
+  window.soundOn = false;
 
   window.onload = function() {
     var infoEl, infoShowing;
+    FW.partiRef = new Firebase("https://partiart.firebaseio.com/");
     FW.myWorld = new FW.World();
     FW.myWorld.animate();
     FW.main = new FW.Main();
@@ -891,6 +894,7 @@
         maxAge: 5
       });
       this.initializeSpells();
+      this.spellGroup.mesh.renderDepth = -1;
       FW.scene.add(this.spellGroup.mesh);
     }
 
