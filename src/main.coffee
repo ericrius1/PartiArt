@@ -12,10 +12,9 @@ SC?.initialize({
 
 FW.sfxVolume = 0.2
 FW.globalTick = 0.16
-window.soundOn = false
+window.soundOn = true
 
 window.onload = ->
-  FW.partiRef = new Firebase("https://partiart.firebaseio.com/")
   FW.myWorld = new FW.World()
   FW.myWorld.animate()
   FW.main = new FW.Main()

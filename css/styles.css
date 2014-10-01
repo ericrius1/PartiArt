@@ -122,4 +122,11 @@ a{
   text-decoration: none
 }
 
+#directions{
+  position: absolute;
+  bottom: 30px;
+  color: white;
+  margin: 10px;
+}
+
           

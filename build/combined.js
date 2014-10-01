@@ -260,6 +260,7 @@
         maxAge: 2
       });
       this.initializeSpells();
+      this.spellGroup.mesh.renderDepth = -1;
       FW.scene.add(this.spellGroup.mesh);
     }
 
@@ -529,11 +530,10 @@
 
   FW.globalTick = 0.16;
 
-  window.soundOn = false;
+  window.soundOn = true;
 
   window.onload = function() {
     var infoEl, infoShowing;
-    FW.partiRef = new Firebase("https://partiart.firebaseio.com/");
     FW.myWorld = new FW.World();
     FW.myWorld.animate();
     FW.main = new FW.Main();
